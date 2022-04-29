@@ -1,0 +1,71 @@
+OLTP
+Hypothetical- 
+Small data- data that can be stored in 1 machine
+1 Machine = 2 numbers!
+3 numbers-> 2 machines
+
+OLAP
+Big data- data too large for 1 machine
+
+1,2,3
+OLTP (SQL, MySQL, PostGre..)
+M1-> 1,2.    M2-> 3
+———replication———
+M3-> 1,2     M4-> 3
+
+Big data-> to store 3 numbers we ended up with 4 machines!!!
+Cost of storage is linearly rising!!!
+
+OLAP— sharding (BigTable, BQ, GCS, Dataproc,
+Datawarehouse, Data Lake…)
+
+Fault tolerance:
+
+M1-> 1,2      M2-> 2,3       M3-> 3,1
+
+Cost is no longer linearly increasing!!!
+
+File format- Spark/HDFS- parquet 
+
+
+OLTP- editing is easy; searching is SLOW
+OLAP- searching is easy; editing is NIGHTMARE!
+
+SUM of all numbers
+M1-> 1,2.    M2-> 3 — M1=3, M2=3, SUM= 6
+———replication———
+M3-> 1,2     M4-> 3——validated! = 6
+
+M1-> 1,2      M2-> 2,3       M3-> 3,1
+M1=3, M2=5, M3=4
+1+2+3 = 12
+
+Programming DOES NOT work on big data anymore!
+
+REDUCE the result
+
+MapReduce-> Map the problem to machines; reduce the result from machines!
+
+Spark (computing) + HDFS (storage)
+MapReduce                  Sharded data
+
+WE CANNOT DO DIRECT PROGRAMMING!
+
+Fall back to a master machine (control plane) that can communicate commands to Spark/HDFS on our behalf!
+
+Lazy Evaluation - OLAP
+Eager Evaluation- OLTP
+
+Lazy evaluation builds up a data structure called DIRECTED ACYLIC GRAPH
+
+Every transformation and action is a node on the graph
+					              OLTP (py)     OLAP (PySpark)
+a=1         a=?          1								True
+b=2      b =?            2							True
+c=a+b c=?            3								True
+print(c) d=?          ‘3’							Action-> calculate()
+																		-> Print()
+
+Compiler+interpret.  v/s DAG
+
+OLAP- TensorFlow, DialogFlow, AirFlow, Composer, Dataproc, BigTable, BigQuery, Beam, KubeFlow
