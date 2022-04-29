@@ -1,0 +1,54 @@
+Label Encoding - dictionary
+
+Hello world - 42 101
+
+For every key there is a value
+
+Use cases- NLP (vocabulary), (where you have related or ranked categories) 
+
+3 types of Sales- low, medium, high
+Label encoding- 0,1,2 - encodings
+
+3 types of colors - green, blue, red
+Label encoding is XXXX why???
+Green !< blue !< red -> 0, 1, 2
+
+Categorical UNRELATED values
+
+One-Hot Encoding 
+Original
+Name Color          Name Red green blue
+Pikachu red          Pikachu   1     0       0
+Dracula blue       Dracula    0     0       1
+Attila Green          Attila        0     1        0
+Robin Green        Robin       0      1        0
+
+Optimized-> (n-1) classes [ red, green] -> 0 0 indicated blue!
+Name Color          Name Red green 
+Pikachu red          Pikachu   1     0       
+Dracula blue       Dracula    0     0       
+Attila Green          Attila        0     1       
+Robin Green        Robin        0     1        
+
+Use case-> 
+1. Generalizing the model.
+                1.  w1* pikachu + w2* 1 + w3* 0 +b = y
+                2. For values with green or blue, feature val =0!
+2. FILTERING-> 3 separate models for where -> red==1, green==1, red==0 && green==0
+
+
+
+Label Binarizing- 
+
+One hot encoding of LABEL not the feature!
+Instead of separate columns, we build a MATRIX!
+
+Label Binarizing is preferred way of exporting the classes predicted by the model, along with the model!
+
+Y -> Cat/Dog/Koala/Giraffe
+
+Binarized -> cat -> [1 0 0 ], dog -> [0 1 0], koala-> [0 0 1], Giraffe -> [0 0 0]
+
+Label encoding/ One hot encoding-> features
+Label Binarizing -> Output Labels!
+
