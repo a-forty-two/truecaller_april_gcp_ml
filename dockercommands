@@ -1,0 +1,8 @@
+sudo apt-get update
+sudo yes | apt-get install python3-pip
+sudo yes | apt-get install docker.io
+sudo yes | apt-get install wget 
+
+wget https://raw.githubusercontent.com/a-forty-two/truecaller_april_gcp_ml/main/Dockerfile
+echo "flask" > requirements.txt
+wget https://raw.githubusercontent.com/a-forty-two/truecaller_april_gcp_ml/main/api.py
